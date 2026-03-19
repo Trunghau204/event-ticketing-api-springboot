@@ -1,0 +1,51 @@
+spring:
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=TicketSystem;encrypt=false;trustServerCertificate=true
+    username: sa
+    password: pass
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.SQLServerDialect
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: manhcuucon@gmail.com
+    password: pass
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+server:
+  port: 8080
+
+# JWT Configuration
+jwt:
+  secret: MySecretKeyForJwtTokenGenerationThatIsLongEnoughForHS256Algorithm123456
+  expiration: 86400000
+
+
+# Stripe Configuration
+stripe:
+  secret-key: 
+  publishable-key: 
+  success-url: http://localhost:5173/payment-result
+  cancel-url: http://localhost:5173/payment-result
+
+# Ticket storage
+ticket:
+  storage-path: ./tickets
