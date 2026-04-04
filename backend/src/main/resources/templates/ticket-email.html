@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Vé sự kiện</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        .header p {
+            margin: 10px 0 0;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 30px;
+        }
+        .info-row {
+            display: flex;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #666;
+            width: 140px;
+            flex-shrink: 0;
+        }
+        .info-value {
+            color: #333;
+        }
+        .highlight {
+            background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .highlight .amount {
+            font-size: 32px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .footer {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            text-align: center;
+            color: #999;
+            font-size: 13px;
+        }
+        .badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎫 Xác nhận đặt vé</h1>
+            <p>Cảm ơn bạn đã đặt vé!</p>
+        </div>
+
+        <div class="content">
+            <p>Xin chào <strong th:text="${fullName}">Nguyễn Văn A</strong>,</p>
+            <p>Đơn hàng của bạn đã được thanh toán thành công. Dưới đây là thông tin chi tiết:</p>
+
+            <div class="info-row">
+                <span class="info-label">Mã đơn hàng:</span>
+                <span class="info-value">#<span th:text="${orderId}">1</span></span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Sự kiện:</span>
+                <span class="info-value" th:text="${eventTitle}">Tên sự kiện</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Thời gian:</span>
+                <span class="info-value" th:text="${#temporals.format(eventDate, 'dd/MM/yyyy HH:mm')}">01/01/2026 20:00</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Địa điểm:</span>
+                <span class="info-value" th:text="${venueName}">Tên địa điểm</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Ghế:</span>
+                <span class="info-value"><span class="badge" th:text="${seats}">A1, A2</span></span>
+            </div>
+
+            <div class="highlight">
+                <p style="margin: 0 0 5px; color: #666;">Tổng thanh toán</p>
+                <span class="amount" th:text="${#numbers.formatDecimal(totalAmount, 0, 'COMMA', 0, 'POINT')} + ' VND'">500,000 VND</span>
+            </div>
+
+            <p>📎 Vé PDF đã được đính kèm trong email này. Vui lòng xuất trình mã QR trên vé khi check-in.</p>
+        </div>
+
+        <div class="footer">
+            <p>Ticket System - Hệ thống bán vé sự kiện trực tuyến</p>
+            <p>Email này được gửi tự động, vui lòng không trả lời.</p>
+        </div>
+    </div>
+</body>
+</html>
