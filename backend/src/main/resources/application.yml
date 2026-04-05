@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:sqlserver://localhost:1433;databaseName=TicketSystem;encrypt=false;trustServerCertificate=true
     username: sa
-    password: 123
+    password: pass
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   jpa:
     hibernate:
@@ -17,7 +17,7 @@ spring:
     host: smtp.gmail.com
     port: 587
     username: manhcuucon@gmail.com
-    password: upqm akto stgq gdvr
+    password: pass
     properties:
       mail:
         smtp:
@@ -41,8 +41,8 @@ jwt:
 
 # Stripe Configuration
 stripe:
-  secret-key: sk_test_51T8aA2DrbaSmNrTWCY1tPU8mGY8PTgSgSblw6MMVoazmC4mK7CG7ksoOePiKnxJGsj8ioZeyEXjGWsCy5oCYizYw00rNeYcrX5
-  publishable-key: pk_test_51T8aA2DrbaSmNrTWcBFRTtyLdJ9nDGhGhTMoYuS7D4GtahFtB53N1GyCVWVl6FKWTEr66glczcAPJ3S9iuSRYhGH00K4oCp0pc
+  secret-key: pass
+  publishable-key: pass
   success-url: http://localhost:5173/payment-result
   cancel-url: http://localhost:5173/payment-result
 
