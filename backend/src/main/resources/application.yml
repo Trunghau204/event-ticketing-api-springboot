@@ -6,7 +6,7 @@ spring:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     database-platform: org.hibernate.dialect.SQLServerDialect
     show-sql: true
     properties:
@@ -41,8 +41,8 @@ jwt:
 
 # Stripe Configuration
 stripe:
-  secret-key: pass
-  publishable-key: pass
+  secret-key: 
+  publishable-key: 
   success-url: http://localhost:5173/payment-result
   cancel-url: http://localhost:5173/payment-result
 
